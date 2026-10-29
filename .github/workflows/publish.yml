@@ -26,6 +26,10 @@ jobs:
         with:
           ref: ${{ github.event.inputs.tag || github.ref }}
 
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: .bun-version
+
       - uses: pnpm/action-setup@v6
 
       - uses: actions/setup-node@v6
