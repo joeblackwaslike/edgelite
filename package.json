@@ -41,7 +41,7 @@
     "typescript"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "node node_modules/typescript/bin/tsc",
     "dev": "bun src/index.ts",
     "test": "vitest",
     "test:watch": "vitest --watch",
@@ -49,7 +49,7 @@
     "lint": "biome ci . && eslint . --max-warnings=0",
     "lint:fix": "biome check --write . && eslint --fix .",
     "format": "biome format --write .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "node node_modules/typescript7/bin/tsc --noEmit",
     "check": "pnpm typecheck && pnpm lint",
     "depcheck": "depcheck --config=.depcheckrc.json",
     "docs:start": "docusaurus start",
@@ -82,6 +82,7 @@
     "typedoc": "^0.28.19",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.61.0",
+    "typescript7": "npm:typescript@^7.0.2",
     "vitest": "^4.1.8"
   },
   "author": "Joe Black <me@joeblack.nyc>",

@@ -9,6 +9,12 @@ title: Quality Checks
 - Biome format + lint
 - ESLint strict mode
 
+## On Every Push (pre-push hook)
+
+- `biome ci` + `pnpm typecheck`
+- ESLint on changed files only, falling back to a full `eslint .` when
+  `eslint.config.mjs`, `tsconfig*.json`, `package.json`, or `pnpm-lock.yaml` changed
+
 ## On Every Push / PR (CI)
 
 - `pnpm typecheck` — TypeScript strict mode, zero errors allowed

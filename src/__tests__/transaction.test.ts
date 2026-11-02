@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, rmSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import type { InsertBuilder, SelectBuilder, SelectShape } from '../codegen/builders.js';
 import { compileSdl } from '../compiler/index.js';
 import { closeDb, openDb } from '../db.js';
@@ -71,7 +71,7 @@ function createGate(): { gate: Promise<void>; release: () => void } {
 
 let db: Db;
 
-beforeEach(async () => {
+beforeAll(async () => {
   if (existsSync(TEST_DB)) rmSync(TEST_DB, { recursive: true });
   db = await openDb(TEST_DB, './schema.esdl');
   const ast = parseSdl(readFileSync(FIXTURE, 'utf8'));
@@ -82,7 +82,11 @@ beforeEach(async () => {
   }
 });
 
-afterEach(async () => {
+beforeEach(async () => {
+  await (db as InternalDb).pglite.exec(`TRUNCATE ${NODES} RESTART IDENTITY CASCADE`);
+});
+
+afterAll(async () => {
   await closeDb(db);
   if (existsSync(TEST_DB)) rmSync(TEST_DB, { recursive: true });
 });
