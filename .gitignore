@@ -31,3 +31,6 @@ dbschema/edgelite.ts
 
 # Git worktrees
 .worktrees/
+
+# Clawhip session-tracking state (churns every session, not for version control)
+.clawhip/state/
