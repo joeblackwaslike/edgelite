@@ -1,8 +1,8 @@
 {
-  "observed_at": "2026-11-02T00:58:23.555Z",
+  "observed_at": "2026-06-01T16:20:45.535Z",
   "provider": "claude-code",
   "event_name": "UserPromptSubmit",
-  "session_id": "c6c89310-cef6-4b3e-84bb-0b2e3ec06797",
+  "session_id": "0c306cee-894e-4e0b-b0d3-b116a47ffaae",
   "turn_id": null,
-  "prompt_summary": "Workspace boundary (important):\n- Confine source, project, user-data, and system file changes to the current working directory, which is a git worktree. Do not intentionally create, modify, move, or d…"
+  "prompt_summary": "please give me a prompt I can paste into Claude Code in the memtree repo so it can pick up and start testing the Edgelight backend"
 }
